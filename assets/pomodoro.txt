@@ -1,0 +1,11 @@
+Pomodoro Sistemi, çalismayi daha odakli ve verimli bir sekilde gerçeklestirmek için belirli bir isi 25 dakika süre içinde tamamlamayi ve ardindan 5 dakikalik bir mola verilmesini saglayan bir çalisma yöntemidir.
+
+Pomodoro Sistemi Hakkinda Tavsiyelerimiz:
+
+1. Her seans öncesinde yapilmasi gereken islerin bir listesini yapiniz.
+2. Seans öncesi isle ilgili tüm hazirliklarinizi tamamlayin.
+3. Zamanlayiciyi baslatin ve çalismaya baslayin. Dikkatinizi dagitacak her türlü unsurdan uzak durun ve seans boyunca seçtiginiz göreve tamamen odaklanin.
+4. Çalisma seansiniz tamamlandiginda mola verin. Her 25 dakikalik çalisma seansi sonrasinda 5 dakikalik bir mola süreniz olacaktir. Bu molayi su içmek, kisa bir yürüyüs yapmak, hava almak gibi rahatlama faaliyetleriyle degerlendirmenizi öneririz.
+5. Döngüleri tamamladikça istege bagli olarak 4 döngü sonrasinda 15-30 dakika gibi daha uzun bir mola süresi verebilirsiniz.
+
+Pomodoro teknigi, odaklanmanizi artirmak ve zamani daha iyi yönetmenize yardimci olmak amaciyla kullanilan bir yöntemdir. Uygulamamiz sayesinde görevlerinizi daha küçük parçalara bölerek kesintisiz bir çalisma deneyimi yasamaniza yardimci olmayi hedefliyoruz. Iyi çalismalar...
