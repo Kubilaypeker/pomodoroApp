@@ -40,6 +40,7 @@ dependencies:
   lottie: ^2.3.2
   flutter_filereader: ^3.0.0
   flutter_text_viewer: ^0.0.4
+  flutter_screenutil: ^5.8.3
 
 dev_dependencies:
   flutter_test:

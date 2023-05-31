@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:lottie/lottie.dart';
@@ -76,6 +77,8 @@ class _homeScreenState extends State<homeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    ScreenUtil.init(context, designSize: const Size(375, 820));
+
     return Scaffold(
       backgroundColor: const Color(0xff1e2225),
       appBar: AppBar(
@@ -88,10 +91,10 @@ class _homeScreenState extends State<homeScreen> {
       body: Column(
         children: [
           Container(
-            padding: const EdgeInsets.symmetric(vertical: 20),
+            padding: EdgeInsets.symmetric(vertical: 10.h),
             child: SizedBox(
-              width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.width,
+              width: 400.h,
+              height: 400.h,
               child: Stack(
                 children: [
                   Center(
@@ -109,7 +112,7 @@ class _homeScreenState extends State<homeScreen> {
                     child: Text("${f.format(_minutes)} : ${f.format(_seconds)}", style: GoogleFonts.roboto(
                       color: Colors.white,
                       fontWeight: FontWeight.bold,
-                      fontSize: 50,
+                      fontSize: 50.sp,
                     ),
                     ),
                   )
@@ -121,8 +124,8 @@ class _homeScreenState extends State<homeScreen> {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               SizedBox(
-                height: 80,
-                width: 80,
+                height: 80.h,
+                width: 80.h,
                 child: FloatingActionButton(
                     onPressed: () {
                   _stopTimer();
@@ -139,8 +142,8 @@ class _homeScreenState extends State<homeScreen> {
                 ),
               ),
               SizedBox(
-                height: 80,
-                width: 80,
+                height: 80.h,
+                width: 80.h,
                 child: FloatingActionButton(
                     onPressed: () {
                       _startTimer();
@@ -159,8 +162,8 @@ class _homeScreenState extends State<homeScreen> {
             ],
           ),
           SizedBox(
-            height: 80,
-            width: 80,
+            height: 80.h,
+            width: 80.h,
             child: FloatingActionButton(
                 onPressed: () {
                   Navigator.push(context,
@@ -178,7 +181,7 @@ class _homeScreenState extends State<homeScreen> {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.all(20),
+            padding: EdgeInsets.all(10.h),
             child: TextButton(onPressed: () {
               getTxt();
               showModalBottomSheet(
