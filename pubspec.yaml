@@ -35,12 +35,12 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.5
-  google_fonts: ^4.0.5
   intl: ^0.18.1
   lottie: ^2.3.2
   flutter_filereader: ^3.0.0
   flutter_text_viewer: ^0.0.4
   flutter_screenutil: ^5.8.3
+  assets_audio_player: ^3.0.6
 
 dev_dependencies:
   flutter_test:
@@ -68,6 +68,9 @@ flutter:
   assets:
     - assets/pomodorometni2.docx
     - assets/pomodoro.txt
+    - assets/music.mp3
+    - assets/work.json
+    - assets/congrats.json
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

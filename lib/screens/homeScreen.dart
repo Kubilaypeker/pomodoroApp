@@ -1,8 +1,8 @@
 import 'dart:async';
+import 'package:assets_audio_player/assets_audio_player.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:lottie/lottie.dart';
 import 'package:pomodoroapp/screens/timeoutScreen.dart';
@@ -19,6 +19,15 @@ class homeScreen extends StatefulWidget {
 
 class _homeScreenState extends State<homeScreen> {
   late String textFromFile;
+  AssetsAudioPlayer player = AssetsAudioPlayer.newPlayer();
+
+
+
+  int _seconds = 00;
+  int _minutes = 25;
+  var f = NumberFormat("00");
+  late Timer _timer;
+  bool _enabledButton = true;
 
   getTxt() async {
     String response;
@@ -28,12 +37,12 @@ class _homeScreenState extends State<homeScreen> {
     });
   }
 
-  int _seconds = 00;
-  int _minutes = 25;
-  var f = NumberFormat("00");
-  late Timer _timer;
-
   void _startTimer(){
+
+      player.open(
+        Audio("assets/music.mp3"),
+        loopMode: LoopMode.single,
+      );
 
     if (_minutes > 0){
       _seconds = _minutes * 60;
@@ -54,9 +63,9 @@ class _homeScreenState extends State<homeScreen> {
           }
           else {
             timer.cancel();
+            player.stop();
             setState(() {
-              _homeScreenState()._minutes = 5;
-              _homeScreenState()._seconds = 0;
+              _enabledButton = true;
               showAlertDialog(context);
             });
           }
@@ -68,6 +77,7 @@ class _homeScreenState extends State<homeScreen> {
   }
 
   void _stopTimer(){
+      player.stop();
       setState(() {
         _timer.cancel();
         _seconds = 0;
@@ -84,7 +94,7 @@ class _homeScreenState extends State<homeScreen> {
       appBar: AppBar(
         automaticallyImplyLeading: false,
         backgroundColor: const Color(0xff1e2225),
-        title: Text("Pomodoro", style: GoogleFonts.roboto(fontWeight: FontWeight.w500),),
+        title: const Text("Pomodoro", style: TextStyle(fontWeight: FontWeight.w500),),
         centerTitle: true,
         elevation: 0,
       ),
@@ -109,7 +119,7 @@ class _homeScreenState extends State<homeScreen> {
                     ),
                   ),
                   Center(
-                    child: Text("${f.format(_minutes)} : ${f.format(_seconds)}", style: GoogleFonts.roboto(
+                    child: Text("${f.format(_minutes)} : ${f.format(_seconds)}", style: TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.bold,
                       fontSize: 50.sp,
@@ -128,15 +138,18 @@ class _homeScreenState extends State<homeScreen> {
                 width: 80.h,
                 child: FloatingActionButton(
                     onPressed: () {
-                  _stopTimer();
+                    setState(() {
+                      _enabledButton = true;
+                    });
+                    _stopTimer();
                 },
                     backgroundColor: const Color(0xfff0c902),
-                    child: Column(
+                    child: const Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        const Icon(Icons.restore_rounded, color: Colors.black,),
-                        Text("Reset", style: GoogleFonts.roboto(fontWeight: FontWeight.w500, color: Colors.black)),
+                        Icon(Icons.restore_rounded, color: Colors.black,),
+                        Text("Reset", style: TextStyle(fontWeight: FontWeight.w500, color: Colors.black)),
                       ],
                     )
                 ),
@@ -146,15 +159,23 @@ class _homeScreenState extends State<homeScreen> {
                 width: 80.h,
                 child: FloatingActionButton(
                     onPressed: () {
-                      _startTimer();
+                      if(_enabledButton == true){
+                        setState(() {
+                          _enabledButton = false;
+                        });
+                        _startTimer();
+                      }
+                      else {
+
+                      }
                     },
                     backgroundColor: const Color(0xfff0c902),
-                    child: Column(
+                    child: const Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        const Icon(Icons.not_started_outlined, color: Colors.black,),
-                        Text("Başlat", style: GoogleFonts.roboto(fontWeight: FontWeight.w500, color: Colors.black)),
+                        Icon(Icons.not_started_outlined, color: Colors.black,),
+                        Text("Başlat", style: TextStyle(fontWeight: FontWeight.w500, color: Colors.black)),
                       ],
                     )
                 ),
@@ -166,16 +187,17 @@ class _homeScreenState extends State<homeScreen> {
             width: 80.h,
             child: FloatingActionButton(
                 onPressed: () {
+                  player.stop();
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => timeOutScreen()));
+                      MaterialPageRoute(builder: (context) => const timeOutScreen()));
                 },
                 backgroundColor: const Color(0xfff0c902),
-                child: Column(
+                child: const Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const Icon(Icons.timer_outlined, color: Color(0xff1e2225),),
-                    Text("Mola Ver", style: GoogleFonts.roboto(fontWeight: FontWeight.w500, color: const Color(0xff1e2225))),
+                    Icon(Icons.timer_outlined, color: Color(0xff1e2225),),
+                    Text("Mola Ver", style: TextStyle(fontWeight: FontWeight.w500, color: Color(0xff1e2225))),
                   ],
                 )
             ),
@@ -192,15 +214,15 @@ class _homeScreenState extends State<homeScreen> {
                     children: [
                       Container(
                         padding: const EdgeInsets.all(10),
-                        child: Text(textFromFile, style: GoogleFonts.roboto(color: Colors.white, fontWeight: FontWeight.w500, fontSize: 14),)
+                        child: Text(textFromFile, style: const TextStyle(color: Colors.white, fontWeight: FontWeight.w500, fontSize: 14),)
                       ),
                     ],
                   )
               );
             },
-                child: Text(
+                child: const Text(
                   "Nasıl Kullanırım?",
-                  style: GoogleFonts.roboto(fontWeight: FontWeight.w500, color: const Color(0xfff0c902),)
+                  style: TextStyle(fontWeight: FontWeight.w500, color: Color(0xfff0c902),)
                 )
             ),
           )
@@ -216,22 +238,22 @@ showAlertDialog(BuildContext context) {
     style: ButtonStyle(
       backgroundColor: MaterialStateProperty.all(const Color(0xfff0c902))
     ),
-    child: Text("Tamam",
-      style: GoogleFonts.poppins(fontWeight: FontWeight.w500, color: Colors.black),
+    child: const Text("Tamam",
+      style: TextStyle(fontWeight: FontWeight.w500, color: Colors.black),
     ),
     onPressed: () {
       Navigator.of(context).pop();
       Navigator.push(context,
-          MaterialPageRoute(builder: (context) => timeOutScreen()));
+          MaterialPageRoute(builder: (context) => const timeOutScreen()));
     },
   );
 
   // Create AlertDialog
   AlertDialog alert = AlertDialog(
     backgroundColor: const Color(0xFF282828),
-    title: Lottie.network("https://assets10.lottiefiles.com/datafiles/3RKIaYNZqu6RrV0/data.json"),
-    content: Text("Tebrikler! Şimdi mola zamanı.",
-      style: GoogleFonts.poppins(
+    title: Lottie.asset("assets/congrats.json", repeat: false),
+    content: const Text("Tebrikler! Şimdi mola zamanı.",
+      style: TextStyle(
           fontWeight: FontWeight.w500,
           color: Colors.white,
       ),

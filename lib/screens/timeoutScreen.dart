@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:lottie/lottie.dart';
 import 'package:flutter/services.dart' show rootBundle;
@@ -19,6 +18,14 @@ class _timeOutScreenState extends State<timeOutScreen> {
   late String textFromFile;
 
 
+
+
+  int _seconds = 00;
+  int _minutes = 5;
+  var f = NumberFormat("00");
+  late Timer _timer;
+  bool _enabledButton = true;
+
   getTxt() async {
     String response;
     response = await rootBundle.loadString('assets/pomodoro.txt');
@@ -26,11 +33,6 @@ class _timeOutScreenState extends State<timeOutScreen> {
       textFromFile = response;
     });
   }
-
-  int _seconds = 00;
-  int _minutes = 5;
-  var f = NumberFormat("00");
-  late Timer _timer;
 
   void _startTimer(){
 
@@ -53,7 +55,11 @@ class _timeOutScreenState extends State<timeOutScreen> {
           }
           else {
             timer.cancel();
-            showAlertDialog(context);
+            setState(() {
+              _enabledButton = true;
+              showAlertDialog(context);
+            });
+
           }
         }
       });
@@ -79,7 +85,7 @@ class _timeOutScreenState extends State<timeOutScreen> {
       appBar: AppBar(
         automaticallyImplyLeading: false,
         backgroundColor: const Color(0xff1e2225),
-        title: Text("Pomodoro", style: GoogleFonts.roboto(fontWeight: FontWeight.w500),),
+        title: Text("Pomodoro", style: TextStyle(fontWeight: FontWeight.w500),),
         centerTitle: true,
         elevation: 0,
       ),
@@ -105,7 +111,7 @@ class _timeOutScreenState extends State<timeOutScreen> {
                       ),
                     ),
                     Center(
-                      child: Text("${f.format(_minutes)} : ${f.format(_seconds)}", style: GoogleFonts.roboto(
+                      child: Text("${f.format(_minutes)} : ${f.format(_seconds)}", style: TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.bold,
                         fontSize: 50.sp,
@@ -124,15 +130,18 @@ class _timeOutScreenState extends State<timeOutScreen> {
                   width: 80.h,
                   child: FloatingActionButton(
                       onPressed: () {
+                        setState(() {
+                          _enabledButton = true;
+                        });
                         _stopTimer();
                       },
                       backgroundColor: const Color(0xfff00245),
-                      child: Column(
+                      child: const Column(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          const Icon(Icons.restore_rounded, color: Color(0xff1e2225),),
-                          Text("Reset", style: GoogleFonts.roboto(fontWeight: FontWeight.w500, color: const Color(0xff1e2225))),
+                          Icon(Icons.restore_rounded, color: Color(0xff1e2225),),
+                          Text("Reset", style: TextStyle(fontWeight: FontWeight.w500, color: Color(0xff1e2225))),
                         ],
                       )
                   ),
@@ -142,15 +151,23 @@ class _timeOutScreenState extends State<timeOutScreen> {
                   width: 80.h,
                   child: FloatingActionButton(
                       onPressed: () {
-                        _startTimer();
+                        if(_enabledButton == true){
+                          setState(() {
+                            _enabledButton = false;
+                          });
+                          _startTimer();
+                        }
+                        else {
+
+                        }
                       },
                       backgroundColor: const Color(0xfff00245),
-                      child: Column(
+                      child: const Column(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          const Icon(Icons.not_started_outlined, color: Color(0xff1e2225),),
-                          Text("Başlat", style: GoogleFonts.roboto(fontWeight: FontWeight.w500, color: const Color(0xff1e2225))),
+                          Icon(Icons.not_started_outlined, color: Color(0xff1e2225),),
+                          Text("Başlat", style: TextStyle(fontWeight: FontWeight.w500, color: Color(0xff1e2225))),
                         ],
                       )
                   ),
@@ -166,12 +183,12 @@ class _timeOutScreenState extends State<timeOutScreen> {
                         MaterialPageRoute(builder: (context) => const homeScreen()));
                   },
                   backgroundColor: const Color(0xfff00245),
-                  child: Column(
+                  child: const Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const Icon(Icons.not_started_outlined, color: Color(0xff1e2225),),
-                      Text("Çalışmaya\ndön",textAlign: TextAlign.center, style: GoogleFonts.roboto(fontWeight: FontWeight.w500, color: const Color(0xff1e2225))),
+                      Icon(Icons.not_started_outlined, color: Color(0xff1e2225),),
+                      Text("Çalışmaya\ndön",textAlign: TextAlign.center, style: TextStyle(fontWeight: FontWeight.w500, color: Color(0xff1e2225))),
                     ],
                   )
               ),
@@ -188,15 +205,15 @@ class _timeOutScreenState extends State<timeOutScreen> {
                       children: [
                         Container(
                             padding: EdgeInsets.all(10.h),
-                            child: Text(textFromFile, style: GoogleFonts.roboto(color: Colors.white, fontWeight: FontWeight.w500, fontSize: 14.sp),)
+                            child: Text(textFromFile, style: TextStyle(color: Colors.white, fontWeight: FontWeight.w500, fontSize: 14.sp),)
                         ),
                       ],
                     )
                 );
               },
-                  child: Text(
+                  child: const Text(
                       "Nasıl Kullanırım?",
-                      style: GoogleFonts.roboto(fontWeight: FontWeight.w500, color: const Color(0xfff00245),)
+                      style: TextStyle(fontWeight: FontWeight.w500, color: Color(0xfff00245),)
                   )
               ),
             )
@@ -213,8 +230,8 @@ showAlertDialog(BuildContext context) {
     style: ButtonStyle(
         backgroundColor: MaterialStateProperty.all(const Color(0xfff00245))
     ),
-    child: Text("Tamam",
-      style: GoogleFonts.poppins(fontWeight: FontWeight.w500, color: Colors.black),
+    child: const Text("Tamam",
+      style: TextStyle(fontWeight: FontWeight.w500, color: Colors.black),
     ),
     onPressed: () {
       Navigator.of(context).pop();
@@ -226,9 +243,9 @@ showAlertDialog(BuildContext context) {
   // Create AlertDialog
   AlertDialog alert = AlertDialog(
     backgroundColor: const Color(0xFF282828),
-    title: Lottie.network("https://assets9.lottiefiles.com/packages/lf20_gjjlq5lu.json", repeat: false),
-    content: Text("Mola Bitti! Çalışmaya dön.",
-      style: GoogleFonts.poppins(
+    title: Lottie.asset("assets/work.json",),
+    content: const Text("Mola Bitti! Çalışmaya dön.",
+      style: TextStyle(
         fontWeight: FontWeight.w500,
         color: Colors.white,
       ),
