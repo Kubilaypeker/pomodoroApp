@@ -1,15 +1,12 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_filereader/flutter_filereader.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:lottie/lottie.dart';
-import 'package:path_provider/path_provider.dart';
 import 'package:pomodoroapp/screens/timeoutScreen.dart';
-import 'package:http/http.dart' as http;
-import 'dart:async' show Future;
 import 'package:flutter/services.dart' show rootBundle;
+
 
 
 class homeScreen extends StatefulWidget {
@@ -20,6 +17,15 @@ class homeScreen extends StatefulWidget {
 }
 
 class _homeScreenState extends State<homeScreen> {
+  late String textFromFile;
+
+  getTxt() async {
+    String response;
+    response = await rootBundle.loadString('assets/pomodoro.txt');
+    setState(() {
+      textFromFile = response;
+    });
+  }
 
   int _seconds = 00;
   int _minutes = 25;
@@ -172,16 +178,19 @@ class _homeScreenState extends State<homeScreen> {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(20),
             child: TextButton(onPressed: () {
+              getTxt();
               showModalBottomSheet(
+                backgroundColor: const Color(0xff1e2225),
                   useSafeArea: true,
                   context: context,
                   builder: (context) => ListView(
                     children: [
-                      Padding(padding: const EdgeInsets.all(8),
-                        child: Text("")
-                      )
+                      Container(
+                        padding: const EdgeInsets.all(10),
+                        child: Text(textFromFile, style: GoogleFonts.roboto(color: Colors.white, fontWeight: FontWeight.w500, fontSize: 14),)
+                      ),
                     ],
                   )
               );

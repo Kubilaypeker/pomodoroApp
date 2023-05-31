@@ -1,11 +1,11 @@
-Pomodoro Sistemi, çalismayi daha odakli ve verimli bir sekilde gerçeklestirmek için belirli bir isi 25 dakika süre içinde tamamlamayi ve ardindan 5 dakikalik bir mola verilmesini saglayan bir çalisma yöntemidir.
+Pomodoro Sistemi, Ã§alismayi daha odakli ve verimli bir sekilde gerÃ§eklestirmek iÃ§in belirli bir isi 25 dakika sÃ¼re iÃ§inde tamamlamayi ve ardindan 5 dakikalik bir mola verilmesini saglayan bir Ã§alisma yÃ¶ntemidir.
 
 Pomodoro Sistemi Hakkinda Tavsiyelerimiz:
 
-1. Her seans öncesinde yapilmasi gereken islerin bir listesini yapiniz.
-2. Seans öncesi isle ilgili tüm hazirliklarinizi tamamlayin.
-3. Zamanlayiciyi baslatin ve çalismaya baslayin. Dikkatinizi dagitacak her türlü unsurdan uzak durun ve seans boyunca seçtiginiz göreve tamamen odaklanin.
-4. Çalisma seansiniz tamamlandiginda mola verin. Her 25 dakikalik çalisma seansi sonrasinda 5 dakikalik bir mola süreniz olacaktir. Bu molayi su içmek, kisa bir yürüyüs yapmak, hava almak gibi rahatlama faaliyetleriyle degerlendirmenizi öneririz.
-5. Döngüleri tamamladikça istege bagli olarak 4 döngü sonrasinda 15-30 dakika gibi daha uzun bir mola süresi verebilirsiniz.
+1. Her seans Ã¶ncesinde yapilmasi gereken islerin bir listesini yapiniz.
+2. Seans Ã¶ncesi isle ilgili tÃ¼m hazirliklarinizi tamamlayin.
+3. Zamanlayiciyi baslatin ve Ã§alismaya baslayin. Dikkatinizi dagitacak her tÃ¼rlÃ¼ unsurdan uzak durun ve seans boyunca seÃ§tiginiz gÃ¶reve tamamen odaklanin.
+4. Ã‡alisma seansiniz tamamlandiginda mola verin. Her 25 dakikalik Ã§alisma seansi sonrasinda 5 dakikalik bir mola sÃ¼reniz olacaktir. Bu molayi su iÃ§mek, kisa bir yÃ¼rÃ¼yÃ¼s yapmak, hava almak gibi rahatlama faaliyetleriyle degerlendirmenizi Ã¶neririz.
+5. DÃ¶ngÃ¼leri tamamladikÃ§a istege bagli olarak 4 dÃ¶ngÃ¼ sonrasinda 15-30 dakika gibi daha uzun bir mola sÃ¼resi verebilirsiniz.
 
-Pomodoro teknigi, odaklanmanizi artirmak ve zamani daha iyi yönetmenize yardimci olmak amaciyla kullanilan bir yöntemdir. Uygulamamiz sayesinde görevlerinizi daha küçük parçalara bölerek kesintisiz bir çalisma deneyimi yasamaniza yardimci olmayi hedefliyoruz. Iyi çalismalar...
+Pomodoro teknigi, odaklanmanizi artirmak ve zamani daha iyi yÃ¶netmenize yardimci olmak amaciyla kullanilan bir yÃ¶ntemdir. Uygulamamiz sayesinde gÃ¶revlerinizi daha kÃ¼Ã§Ã¼k parÃ§alara bÃ¶lerek kesintisiz bir Ã§alisma deneyimi yasamaniza yardimci olmayi hedefliyoruz. Iyi Ã§alismalar...
