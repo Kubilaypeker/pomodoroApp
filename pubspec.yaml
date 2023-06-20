@@ -37,7 +37,6 @@ dependencies:
   cupertino_icons: ^1.0.5
   intl: ^0.18.1
   lottie: ^2.3.2
-  flutter_filereader: ^3.0.0
   flutter_text_viewer: ^0.0.4
   flutter_screenutil: ^5.8.3
   assets_audio_player: ^3.0.6
